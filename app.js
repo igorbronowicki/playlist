@@ -10,7 +10,7 @@ app.use('/static', express.static(__dirname + '/public'));
 
 
 // routes
-app.get('/', function(req, res){
+app.get('*', function(req, res){
     res.render('index');
 });
 

@@ -12,21 +12,27 @@
     <script type="text/javascript" src="/static/index.js"></script>
 </head>
 <body>
-    <header id="header" class="row">
-        <div class="eight columns">
-            <h1><a href="/">My Playlists</a></h1>
-            <h4 class="subheader">I like music.</h4>
-        </div>
+    <header>
+        <h1><a href="/">My Playlists</a></h1>
+        <h4>I like music.</h4>
     </header>
 
-    <div class="row">
-        <div id="playListBox" class="four columns">
-            Loading...
-        </div>
+    <nav id="band-list-wrapper">
+        Loading...
+    </nav>
 
-        <div id="selectedPlayList" class="eight columns">
-            <h3>Please, select playlist :)</h3>
-        </div>
-    </div>
+    <article id="band-view">
+        <h3>Please, select playlist :)</h3>
+    </article>
+
+    <script type="text/template" id="bandListItemTemplate">
+        <a href="#">{{name}}</a>
+    </script>
+
+    <script type="text/template" id="bandShowTemplate">
+        <a href="#" class="destroy">Destroy</a>
+        <h3>{{name}}</h3>
+        <p>{{description}}</p>
+    </script>
 </body>
 </html>
