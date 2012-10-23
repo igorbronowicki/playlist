@@ -90,11 +90,12 @@ App.View.BandItem = Backbone.View.extend({
     template: $('#bandListItemTemplate').html(),
 
     events: {
+        //"click a": "printID", // Как сделать чтобы оба обработчика срабатывали?
         "click a": "openBandShow" // При клике на ссылку перейти на стр. полного описания
     },
 
     initialize: function() {
-        _.bindAll(this, "render", "remove");
+        _.bindAll(this, "render", "remove", "printID");
         this.model.on("change", this.render); // Прослушиваем изменения экземпляра модели
         this.model.on("destroy", this.remove); // Прослушиваем удаление экземпляра модели
     },
@@ -112,6 +113,11 @@ App.View.BandItem = Backbone.View.extend({
     openBandShow: function(e) {
         e.preventDefault(); // Т.к. клик происходит по ссылке, необходимо предотвратить действия по умолчанию
         Backbone.history.navigate("band/" + this.model.get("id"), {trigger: true, replace: false}); // Тут надо будет разобраться с опциями
+    },
+
+    printID: function(e) {
+        e.preventDefault(); // Т.к. клик происходит по ссылке, необходимо предотвратить действия по умолчанию
+        console.log(this.model.get("id"));
     },
 
     destroyView: function() {
