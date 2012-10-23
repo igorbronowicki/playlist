@@ -188,14 +188,15 @@ App.Router.Main = Backbone.Router.extend({
 
         this.on("all", this.afterRouting); // А шо это за событие такое мы подвязываем на Router?
     },
-    afterRouting: function() {
-        // TODO Подсветка текущей выбранной группы в списке
-        /*
-         $("#playLists dd").removeClass("active")
-            switch trigger
-              when "route:playList"
-                $("#playLists dd[data-id='#{args}']").addClass("active")
-        */
+    // Подсветка текущей выбранной муз. группы в списке !WARNING это же не правильно! теряется вся модульность проекта (мы лезем в чужую View)
+    afterRouting: function(trigger, args) { // {trigger} - вызванный маршрут, {args} параметры в URL
+        $("#band-list-wrapper li").removeClass("active");
+        switch (trigger) {
+            case "route:showBandByID":
+                $("#band-list-wrapper li[data-id='"+args+"']").addClass("active");
+                break;
+            default:
+        }
     },
     index: function() {
         this._renderMainView();
