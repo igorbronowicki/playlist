@@ -53,7 +53,7 @@ App.View.BandList = Backbone.View.extend({
 
     // При инициализации View навешиваем обытия на переданную ей коллекцию.
     initialize: function() {
-        _.bindAll(this, "renderBandItem");
+        _.bindAll(this, "renderBandItem", "render");
         this.collection.on("add", this.renderBandItem); // Прослушивание добавления в (переданую View) коллекцию элемента.
         this.collection.on("reset", this.render); // Прослушивание события обновления всей коллекции (переданой View).
     },
@@ -94,6 +94,7 @@ App.View.BandItem = Backbone.View.extend({
     },
 
     initialize: function() {
+        _.bindAll(this, "render", "remove");
         this.model.on("change", this.render); // Прослушиваем изменения экземпляра модели
         this.model.on("destroy", this.remove); // Прослушиваем удаление экземпляра модели
     },
@@ -132,6 +133,7 @@ App.View.BandShow = Backbone.View.extend({
     },
 
     initialize: function() {
+        _.bindAll(this, "render", "remove");
         this.model.on("change", this.render); // Прослушиваем изменения экземпляра (переданного View) модели
         this.model.on("destroy", this.remove); // Прослушиваем удаление экземпляра (переданного View) модели
     },
